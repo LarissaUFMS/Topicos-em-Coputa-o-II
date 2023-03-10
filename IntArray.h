@@ -1,13 +1,13 @@
 #pragma once
 //Diretiva de guarda
-#ifndef --IntArray.h
-#define --IntArray.h
+#ifndef INTARRAY_H
+#define INTARRAY_H
 
 #endif
 
 class IntArray {
-	//Boas prática: atributo privado inicia com '_'
-	private: //Classe os atributos são privados por default enquanto struct são publicos por default
+	//Boas prÃ¡tica: atributo privado inicia com '_'
+	private: //Classe os atributos sÃ£o privados por default enquanto struct sÃ£o publicos por default
 		int _capacity;
 		int _size;
 		int* _data;
@@ -16,14 +16,14 @@ class IntArray {
 		int* find(int value) const;
 
 	public:
-		//Método contrutor
+		//MÃ©todo contrutor
 		IntArray()
 		{
 			_capacity = _size = 0;
 			_data = nullptr; //nulptr uma palavra reservada que significa ponteiro nulo
 		}
 
-		//Método contrutor
+		//MÃ©todo contrutor
 		IntArray(int capacityy)
 		{
 			assert(capacity > 0);
@@ -32,8 +32,8 @@ class IntArray {
 			_data = new int[capacity];
 		}
 
-		//Método destrutor
-		~IntArray()//Destrutor é caracterizado inserir o símbolo antes'~' 
+		//MÃ©todo destrutor
+		~IntArray()//Destrutor Ã© caracterizado inserir o sÃ­mbolo antes'~' 
 		{
 			delete[]_data;
 		}
@@ -72,3 +72,5 @@ class IntArray {
 		}
 
 };
+
+#endif
