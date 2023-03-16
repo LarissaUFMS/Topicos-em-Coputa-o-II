@@ -1,38 +1,42 @@
 #include "IntArray.h"
-#include <algorithm>
+#include <algorithm> // std::copy
+#include <iostream> //std::cout
 
-//métodos privados
-void
-IntArray::resize()
-{
-    ++_capacity;
-    int* tempData = new int[_capacity];
-    ++_size;
-    std::copy(_data, _data + _size, tempData);
-    delete[]_data;
-    _data = tempData;
+// Métodos privados
+void IntArray::resize() {
+	++_capacity;
+	++_size;
+	int* tempData = new int[_capacity];
+	std::copy(_data, _data + _size, tempData);
+	delete[] _data;
+	_data = tempData;
 }
 
 int*
 IntArray::find(int value) const
 {
-    for(int i = 0; i <= _size; ++i){
-        if(_data[i] == value)
-            return _data + i;
-    }
-    return nullptr;
+	for (int i = 0; i <= _size; ++i) {
+		if (_data[i] == value)
+			return _data + i;
+	}
+	return nullptr;
 }
 
-//métodos públicos
+// Métodos públicos
+void IntArray::printData() const {
+	for (int i = 0; i <= _size; ++i) {
+		std::cout << _data[i] << " ";
+	}
+}
 
 bool
 IntArray::remove(int value)
 {
-    int* position = find(value);
-    if(position == nullptr)
-        return false;
-    while(position != _data + _size)
-        *position = *(++position);
-    --_size;
-    return true;
+	auto position = find(value);
+	if (position == nullptr)
+		return false;
+	for (; position != _data + _size; ++position)
+		*position = position[1];
+	--_size;
+	return true;
 }
