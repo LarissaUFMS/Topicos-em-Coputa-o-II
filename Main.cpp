@@ -1,13 +1,11 @@
 #include "IntArray.h"
 
-int
-main()
-{
+int main() {
 	IntArray a;
-	IntArray* pa = new IntArray;
 
-	for (int i = 1; i < 10; ++i)
+	for (int i = 1; i < 11; i++)
 		a.add(i);
-
+	a.remove(4);
+	a.printData();
 	return 0;
 }
